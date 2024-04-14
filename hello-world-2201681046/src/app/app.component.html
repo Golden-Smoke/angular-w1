@@ -175,30 +175,44 @@
       margin-block: 1.5rem;
     }
   }
+  .dropdown {
+    display: none;
+  }
+  .dropdown.active {
+    display: block;
+  }
+  h2 {
+    cursor: pointer;
+  }
 </style>
 
 <main class="main">
    <div>
-    <h2>About Me</h2>
-    <p>Name: {{student.name}}</p>
-    <p>Age: {{student.age}}</p>
-    <p>Favorite Content Creator: {{student.contentCreatorLink}}</p>
-    <h2>My Hobbies</h2>
-    <ul>
+    <h2 (click)="toggleMenu(1)">About Me</h2>
+    <div data-index="1" class="dropdown">
+      <p>Name: {{student.name}}</p>
+      <p>Age: {{student.age}}</p>
+      <p>Favorite Content Creator: {{student.contentCreatorLink}}</p>
+    </div>
+    
+    <h2 (click)="toggleMenu(2)">My Hobbies</h2>
+    <ul data-index="2" class="dropdown">
       @for(hobby of student.hobbies; track hobby) {
         <li>{{hobby}}</li>
       }
     </ul>
-    <h2>My Services</h2>
-    <ul>
+    <h2 (click)="toggleMenu(3)">My Services</h2>
+    <ul data-index="3" class="dropdown">
       @for(service of student.services; track service) {
         <li>{{service}}</li>
       }
     </ul>
-    <h2>My Channel</h2>
-    <p>Title: {{student.channel.channelTitle}}</p>
-    <p>Subscribers: {{student.channel.subs}}</p>
-    <p>Total Views: {{student.channel.totalViews}}</p>
+    <h2 (click)="toggleMenu(4)">My Channel</h2>
+    <div data-index="4" class="dropdown">
+      <p>Title: {{student.channel.channelTitle}}</p>
+      <p>Subscribers: {{student.channel.subs}}</p>
+      <p>Total Views: {{student.channel.totalViews}}</p>
+    </div>
    </div>
 </main>
 

@@ -45,5 +45,16 @@ export class AppComponent {
       "Editing videos with Adobe Premiere Pro",
       "Making web applications"
     ]
+  };
+  toggleMenu: (index: number) => void = (index: number) => {
+    const activeMenu = document.querySelector(".active");
+    const chosenMenu = document.querySelector(`[data-index="${index}"]`);
+
+    if(activeMenu === null) {
+      chosenMenu?.classList.add("active");
+      return;
+    }
+    activeMenu.classList.remove("active");
+    chosenMenu?.classList.add("active");
   }
 }
